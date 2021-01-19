@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,6 +46,8 @@ namespace GraZaDuzoZaMalo.Model
     /// Pojedynczy Ruch
     /// </para>
     /// </remarks>
+    [Serializable]
+    [DataContract]
     public class Gra
     {
         /// <summary>
@@ -63,7 +66,7 @@ namespace GraZaDuzoZaMalo.Model
         /// </value>
         public int MinLiczbaDoOdgadniecia { get; } = 1;
 
-
+        [DataMember]
         readonly private int liczbaDoOdgadniecia;
 
 
@@ -88,9 +91,10 @@ namespace GraZaDuzoZaMalo.Model
         /// <para>Zmiana wartości zmiennej na <see cref="Gra.Status.Poddana"/> po uruchomieniu metody <see cref="Przerwij"/>.</para>
         /// <para>Zmiana wartości zmiennej na <see cref="Gra.Status.Zakonczona"/> w metodzie <see cref="Propozycja(int)"/>, po podaniu poprawnej, odgadywanej liczby.</para>
         /// </remarks>
+        [DataMember]
         public Status StatusGry { get; private set; }
 
-
+        [DataMember]
         private List<Ruch> listaRuchow;
 
         public IReadOnlyList<Ruch> ListaRuchow { get { return listaRuchow.AsReadOnly(); } }
@@ -161,10 +165,20 @@ namespace GraZaDuzoZaMalo.Model
             {
                 StatusGry = Status.Poddana;
                 CzasZakonczenia = DateTime.Now;
-                listaRuchow.Add(new Ruch(null, null, Status.WTrakcie));
+                listaRuchow.Add(new Ruch(null, null, Status.Zakonczona));
             }
 
             return liczbaDoOdgadniecia;
+        }
+
+        public void Wznow()
+        {
+            if (StatusGry == Status.Poddana)
+            {
+                StatusGry = Status.WTrakcie;
+                CzasZakonczenia = null;
+                listaRuchow.Add(new Ruch(null, null, Status.WTrakcie));
+            }
         }
 
 
@@ -176,6 +190,7 @@ namespace GraZaDuzoZaMalo.Model
             ZaDuzo = 1
         };
 
+        [Serializable]
         public class Ruch
         {
             public int? Liczba { get; }

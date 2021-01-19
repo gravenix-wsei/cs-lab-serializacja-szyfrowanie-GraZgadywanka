@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using GraCLI;
 using GraZaDuzoZaMalo.Model;
 using static GraZaDuzoZaMalo.Model.Gra.Odpowiedz;
 
@@ -15,6 +16,8 @@ namespace AppGraZaDuzoZaMaloCLI
 
         private Gra gra;
         private WidokCLI widok;
+        // Można tutaj też użyć XMLGameSerializer
+        private GameSaver gameSaver = new BinaryGameSerializer();
 
         public int MinZakres { get; private set; } = 1;
         public int MaxZakres { get; private set; } = 100;
@@ -42,8 +45,17 @@ namespace AppGraZaDuzoZaMaloCLI
             widok.CzyscEkran();
             // ustaw zakres do losowania
 
-
-            gra = new Gra(MinZakres, MaxZakres); //może zgłosić ArgumentException
+            if (gameSaver.SaveExists && widok.ChceszKontynuowac("Czy chcesz wczytać poprzednią rozgrywkę? (t/n)"))
+            {
+                gra = gameSaver.LoadGame();
+                gra.Wznow();
+                gameSaver.SerializeGame(gra);
+                widok.HistoriaGry();
+            } else
+            {
+                gra = new Gra(MinZakres, MaxZakres); //może zgłosić ArgumentException
+                gameSaver.DeleteSave();
+            }
 
             do
             {
@@ -56,6 +68,9 @@ namespace AppGraZaDuzoZaMaloCLI
                 catch( KoniecGryException)
                 {
                     gra.Przerwij();
+                    gameSaver.SerializeGame(gra);
+                    Console.WriteLine("Gra została zapisana");
+                    Environment.Exit(0); // wyjdź z aplikacji
                 }
 
                 Console.WriteLine(propozycja);
@@ -83,7 +98,11 @@ namespace AppGraZaDuzoZaMaloCLI
             while (gra.StatusGry == Gra.Status.WTrakcie);
                       
             //if StatusGry == Przerwana wypisz poprawną odpowiedź
-            //if StatusGry == Zakończona wypisz statystyki gry
+            if (gra.StatusGry == Gra.Status.Zakonczona)
+            {
+                gameSaver.DeleteSave();
+                widok.HistoriaGry();
+            }
         }
 
         ///////////////////////
