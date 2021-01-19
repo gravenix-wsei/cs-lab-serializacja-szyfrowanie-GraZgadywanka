@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraCLI", "GraCLI\GraCLI.csproj", "{9028C9B1-CB67-4D36-ADB4-01784FF565A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {26EAFF71-5082-42D6-B310-9EA1CD19DF97}
+	EndGlobalSection
+EndGlobal
