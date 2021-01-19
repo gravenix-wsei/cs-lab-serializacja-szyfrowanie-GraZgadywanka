@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.808.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraCLI", "GraCLI\GraCLI.csproj", "{9028C9B1-CB67-4D36-ADB4-01784FF565A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraCLIBinarnie", "GraCLI\GraCLIBinarnie.csproj", "{9028C9B1-CB67-4D36-ADB4-01784FF565A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraCLIXML", "GraCLIXML\GraCLIXML.csproj", "{78BEADFE-8BB1-437D-9BCC-1574E9CA0145}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9028C9B1-CB67-4D36-ADB4-01784FF565A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78BEADFE-8BB1-437D-9BCC-1574E9CA0145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78BEADFE-8BB1-437D-9BCC-1574E9CA0145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78BEADFE-8BB1-437D-9BCC-1574E9CA0145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78BEADFE-8BB1-437D-9BCC-1574E9CA0145}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

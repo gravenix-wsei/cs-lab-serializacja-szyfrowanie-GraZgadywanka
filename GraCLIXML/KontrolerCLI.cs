@@ -16,7 +16,7 @@ namespace AppGraZaDuzoZaMaloCLI
 
         private Gra gra;
         private WidokCLI widok;
-        private GameSaver gameSaver = new BinaryGameSerializer();
+        private GameSaver gameSaver = new XMLGameSerializer();
 
         public int MinZakres { get; private set; } = 1;
         public int MaxZakres { get; private set; } = 100;
